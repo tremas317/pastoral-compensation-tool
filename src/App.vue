@@ -74,11 +74,11 @@ export default {
     },
     basicTotal() {
       let total = 0;
-      if ((this.salary.basic.region = "48 Contiguous & DC")) {
+      if (this.salary.basic.region == "48 Contiguous & DC") {
         total += 12140 + 4320 * (this.salary.basic.persons - 1);
-      } else if ((this.salary.basic.region = "Alaska")) {
+      } else if (this.salary.basic.region == "Alaska") {
         total += 15180 + 5400 * (this.salary.basic.persons - 1);
-      } else if ((this.salary.basic.region = "Hawaii")) {
+      } else if (this.salary.basic.region == "Hawaii") {
         total += 13960 + 4970 * (this.salary.basic.persons - 1);
       }
       if (this.salary.basic.yearsOfService != 0) {
