@@ -75,46 +75,46 @@ export default {
     basicTotal() {
       let total = 0;
       if (this.salary.basic.region == "48 Contiguous & DC") {
-        total += 12140 + 4320 * (this.salary.basic.persons - 1);
+        total += 12140 + 4320 * (parseInt(this.salary.basic.persons) - 1);
       } else if (this.salary.basic.region == "Alaska") {
-        total += 15180 + 5400 * (this.salary.basic.persons - 1);
+        total += 15180 + 5400 * (parseInt(this.salary.basic.persons) - 1);
       } else if (this.salary.basic.region == "Hawaii") {
-        total += 13960 + 4970 * (this.salary.basic.persons - 1);
+        total += 13960 + 4970 * (parseInt(this.salary.basic.persons) - 1);
       }
-      if (this.salary.basic.yearsOfService != 0) {
-        total += this.salary.basic.yearsOfService * 0.03 * total;
+      if (parseInt(this.salary.basic.yearsOfService) !== 0) {
+        total += parseInt(this.salary.basic.yearsOfService) * 0.03 * total;
       }
 
       return total;
     },
     housingTotal() {
       return (
-        this.salary.housing.monthlyRent * 12 +
-        this.salary.housing.insurance * 12 +
-        this.salary.housing.utilities * 12 +
-        this.salary.housing.additionalCosts
+        parseInt(this.salary.housing.monthlyRent) * 12 +
+        parseInt(this.salary.housing.insurance) * 12 +
+        parseInt(this.salary.housing.utilities) * 12 +
+        parseInt(this.salary.housing.additionalCosts)
       );
     },
     healthcareTotal() {
       return (
-        this.salary.healthcare.healthInsurace * 12 +
-        this.salary.healthcare.lifeInsurance * 12 +
-        this.salary.healthcare.disabilityInsurance * 12 +
-        this.computedSalary.healthcare.medicare +
-        this.computedSalary.healthcare.socialSecurity +
-        (this.basicTotal + this.housingTotal) *
-          (1 / this.salary.healthcare.pensionPercent)
+        parseInt(this.salary.healthcare.healthInsurace) * 12 +
+        parseInt(this.salary.healthcare.lifeInsurance) * 12 +
+        parseInt(this.salary.healthcare.disabilityInsurance) * 12 +
+        parseInt(this.computedSalary.healthcare.medicare) +
+        parseInt(this.computedSalary.healthcare.socialSecurity) +
+        (parseInt(this.basicTotal) + parseInt(this.housingTotal)) *
+          (1 / parseInt(this.salary.healthcare.pensionPercent))
       );
     },
     otherTotal() {
       return (
-        this.salary.other.childrensEducation * 12 +
-        this.salary.other.debt * 12 +
-        this.salary.other.books +
-        this.salary.other.classes +
-        this.salary.other.computer / 3 +
-        this.salary.other.cellphone * 12 +
-        this.salary.other.other
+        parseInt(this.salary.other.childrensEducation) * 12 +
+        parseInt(this.salary.other.debt) * 12 +
+        parseInt(this.salary.other.books) +
+        parseInt(this.salary.other.classes) +
+        parseInt(this.salary.other.computer) / 3 +
+        parseInt(this.salary.other.cellphone) * 12 +
+        parseInt(this.salary.other.other)
       );
     },
     totalPackage() {

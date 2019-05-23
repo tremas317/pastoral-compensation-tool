@@ -7,7 +7,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.childrensEducation">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.childrensEducation"
+              v-bind:class="{ 'is-danger': otherLocal.childrensEducation === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-school"></i>
             </span>
@@ -16,6 +21,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.childrensEducation === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -26,7 +32,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.debt">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.debt"
+              v-bind:class="{ 'is-danger': otherLocal.debt === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-hand-holding-usd"></i>
             </span>
@@ -35,6 +46,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.debt === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -43,7 +55,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.books">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.books"
+              v-bind:class="{ 'is-danger': otherLocal.books === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-book"></i>
             </span>
@@ -52,6 +69,7 @@
             <a class="button is-static">$/Year</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.books === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -62,7 +80,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.classes">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.classes"
+              v-bind:class="{ 'is-danger': otherLocal.classes === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-chalkboard-teacher"></i>
             </span>
@@ -71,6 +94,7 @@
             <a class="button is-static">$/Year</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.classes === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -81,7 +105,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.computer">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.computer"
+              v-bind:class="{ 'is-danger': otherLocal.computer === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-laptop"></i>
             </span>
@@ -90,6 +119,7 @@
             <a class="button is-static">$/3 Years</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.computer === ''">Please enter a number</p>
         <p
           class="help"
         >The calculation will divide the 3 year replacement figure into an annual sum.</p>
@@ -103,7 +133,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.cellphone">
+            <input
+              class="input"
+              type="number"
+              v-model.number="otherLocal.cellphone"
+              v-bind:class="{ 'is-danger': otherLocal.cellphone === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-mobile"></i>
             </span>
@@ -112,6 +147,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.cellphone === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -120,7 +156,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="otherLocal.other">
+            <input
+              class="input"
+              v-bind:class="{ 'is-danger': otherLocal.other === '' }"
+              type="number"
+              v-model.number="otherLocal.other"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-ellipsis-h"></i>
             </span>
@@ -129,6 +170,7 @@
             <a class="button is-static">$/Year</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="otherLocal.other === ''">Please enter a number</p>
       </div>
     </div>
 

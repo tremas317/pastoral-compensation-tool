@@ -25,7 +25,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="basicLocal.persons">
+            <input
+              class="input"
+              type="number"
+              v-model.number="basicLocal.persons"
+              v-bind:class="{ 'is-danger': basicLocal.persons === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-users"></i>
             </span>
@@ -34,6 +39,7 @@
             <a class="button is-static">Persons</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="basicLocal.persons === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -42,7 +48,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="basicLocal.yearsOfService">
+            <input
+              class="input"
+              type="number"
+              v-model.number="basicLocal.yearsOfService"
+              v-bind:class="{ 'is-danger': basicLocal.yearsOfService === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-calendar-alt"></i>
             </span>
@@ -51,6 +62,7 @@
             <a class="button is-static">Years</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="basicLocal.yearsOfService === ''">Please enter a number</p>
       </div>
     </div>
 

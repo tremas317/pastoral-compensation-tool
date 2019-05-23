@@ -8,7 +8,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="healthcareLocal.healthInsurace">
+            <input
+              class="input"
+              type="number"
+              v-model.number="healthcareLocal.healthInsurace"
+              v-bind:class="{ 'is-danger': healthcareLocal.healthInsurace === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-user-md"></i>
             </span>
@@ -17,6 +22,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="healthcareLocal.healthInsurace === ''">Please enter a number</p>
         <p
           class="help"
         >Taking into consideration the size of his family and the ages of family members, and your love for his family, what health care coverages should be provided? Actually get quotes. If you determine that a high deductible plan would be desirable for all involved, make sure that there is enough discretionary income in his package to cover the deductible.</p>
@@ -28,7 +34,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="healthcareLocal.lifeInsurance">
+            <input
+              class="input"
+              type="number"
+              v-model.number="healthcareLocal.lifeInsurance"
+              v-bind:class="{ 'is-danger': healthcareLocal.lifeInsurance === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-life-ring"></i>
             </span>
@@ -37,6 +48,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="healthcareLocal.lifeInsurance === ''">Please enter a number</p>
         <p class="help">
           There are numerous calculators available to determine how much life insurance a man should carry. Using such a tool or competent counsel, get quotes for a man of his age and health. See e.g.,
           <a
@@ -51,7 +63,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="healthcareLocal.disabilityInsurance">
+            <input
+              class="input"
+              type="number"
+              v-model.number="healthcareLocal.disabilityInsurance"
+              v-bind:class="{ 'is-danger': healthcareLocal.disabilityInsurance === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-wheelchair"></i>
             </span>
@@ -60,6 +77,10 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p
+          class="help is-danger"
+          v-if="healthcareLocal.disabilityInsurance === ''"
+        >Please enter a number</p>
         <p
           class="help"
         >Disability insurance is a very inexpensive way of guarding both the pastor’s care and the church’s budget. How much will his monthly premiums be? Note: this should be included in his salary and taxed.</p>
@@ -117,7 +138,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="healthcareLocal.pensionPercent">
+            <input
+              class="input"
+              type="number"
+              v-model.number="healthcareLocal.pensionPercent"
+              v-bind:class="{ 'is-danger': healthcareLocal.pensionPercent === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-percent"></i>
             </span>
@@ -126,6 +152,7 @@
             <a class="button is-static">Percent</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="healthcareLocal.pensionPercent === ''">Please enter a number</p>
       </div>
     </div>
 

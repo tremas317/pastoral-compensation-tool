@@ -9,7 +9,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="housingLocal.monthlyRent">
+            <input
+              class="input"
+              type="number"
+              v-model.number="housingLocal.monthlyRent"
+              v-bind:class="{ 'is-danger': housingLocal.monthlyRent === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-home"></i>
             </span>
@@ -18,6 +23,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="housingLocal.monthlyRent === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -28,7 +34,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="housingLocal.insurance">
+            <input
+              class="input"
+              type="number"
+              v-model.number="housingLocal.insurance"
+              v-bind:class="{ 'is-danger': housingLocal.insurance === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-house-damage"></i>
             </span>
@@ -37,6 +48,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="housingLocal.insurance === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -45,7 +57,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="housingLocal.utilities">
+            <input
+              class="input"
+              type="number"
+              v-model.number="housingLocal.utilities"
+              v-bind:class="{ 'is-danger': housingLocal.utilities === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-lightbulb"></i>
             </span>
@@ -54,6 +71,7 @@
             <a class="button is-static">$/Month</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="housingLocal.utilities === ''">Please enter a number</p>
         <p
           class="help"
         >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishing, grounds maintenance, home repairs and improvements, and pest control, for example</p>
@@ -65,7 +83,12 @@
       <div class="control">
         <div class="field has-addons">
           <p class="control has-icons-left">
-            <input class="input" type="number" v-model.number="housingLocal.additionalCosts">
+            <input
+              class="input"
+              type="number"
+              v-model.number="housingLocal.additionalCosts"
+              v-bind:class="{ 'is-danger': housingLocal.additionalCosts === '' }"
+            >
             <span class="icon is-small is-left">
               <i class="fas fa-dollar-sign"></i>
             </span>
@@ -74,6 +97,7 @@
             <a class="button is-static">$/Year</a>
           </div>
         </div>
+        <p class="help is-danger" v-if="housingLocal.additionalCosts === ''">Please enter a number</p>
       </div>
     </div>
 
