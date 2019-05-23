@@ -33,8 +33,8 @@ export default {
     return {
       salary: {
         basic: {
-          region: "48 Contiguous & DC",
-          regionOptions: ["48 Contiguous & DC", "Alaska", "Hawaii"],
+          region: "48 Contiguous, DC & Canada",
+          regionOptions: ["48 Contiguous, DC & Canada", "Alaska", "Hawaii"],
           persons: 4,
           yearsOfService: 0
         },
@@ -74,7 +74,7 @@ export default {
     },
     basicTotal() {
       let total = 0;
-      if (this.salary.basic.region == "48 Contiguous & DC") {
+      if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
         total += 12140 + 4320 * (parseInt(this.salary.basic.persons) - 1);
       } else if (this.salary.basic.region == "Alaska") {
         total += 15180 + 5400 * (parseInt(this.salary.basic.persons) - 1);
