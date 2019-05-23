@@ -6,47 +6,75 @@
       <label
         class="label"
       >Taking into consideration the size of the family, as well as hospitality expectations of the minister, what is a reasonable monthly rent or mortgage payment for the size and location of an appropriate home?</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="housingLocal.monthlyRent">
-        <span class="icon is-small is-left">
-          <i class="fas fa-home"></i>
-        </span>
-      </p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="housingLocal.monthlyRent">
+            <span class="icon is-small is-left">
+              <i class="fas fa-home"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">$/Month</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="field">
       <label
         class="label"
       >What is homeowners (or renters) insurance for such a home likely to cost each month?</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="housingLocal.insurance">
-        <span class="icon is-small is-left">
-          <i class="fas fa-house-damage"></i>
-        </span>
-      </p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="housingLocal.insurance">
+            <span class="icon is-small is-left">
+              <i class="fas fa-house-damage"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">$/Month</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="field">
       <label class="label">What will utilities likely cost?</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="housingLocal.utilities">
-        <span class="icon is-small is-left">
-          <i class="fas fa-lightbulb"></i>
-        </span>
-      </p>
-      <p
-        class="help"
-      >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishing, grounds maintenance, home repairs and improvements, and pest control, for example</p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="housingLocal.utilities">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lightbulb"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">$/Month</a>
+          </div>
+        </div>
+        <p
+          class="help"
+        >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishing, grounds maintenance, home repairs and improvements, and pest control, for example</p>
+      </div>
     </div>
 
     <div class="field">
       <label class="label">Additional Annual Housing Costs</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="housingLocal.additionalCosts">
-        <span class="icon is-small is-left">
-          <i class="fas fa-dollar-sign"></i>
-        </span>
-      </p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="housingLocal.additionalCosts">
+            <span class="icon is-small is-left">
+              <i class="fas fa-dollar-sign"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">$/Year</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h4 class="subtitle is-4">Total Housing: {{ housingTotal | currency('$', 0) }}/yr</h4>

@@ -22,22 +22,36 @@
 
     <div class="field">
       <label class="label">How many persons does the household support?</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="basicLocal.persons">
-        <span class="icon is-small is-left">
-          <i class="fas fa-users"></i>
-        </span>
-      </p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="basicLocal.persons">
+            <span class="icon is-small is-left">
+              <i class="fas fa-users"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">Persons</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="field">
       <label class="label">What year of service as a minister is the man entering into?</label>
-      <p class="control has-icons-left">
-        <input class="input" type="text" v-model="basicLocal.yearsOfService">
-        <span class="icon is-small is-left">
-          <i class="fas fa-calendar-alt"></i>
-        </span>
-      </p>
+      <div class="control">
+        <div class="field has-addons">
+          <p class="control has-icons-left">
+            <input class="input" type="number" v-model.number="basicLocal.yearsOfService">
+            <span class="icon is-small is-left">
+              <i class="fas fa-calendar-alt"></i>
+            </span>
+          </p>
+          <div class="control">
+            <a class="button is-static">Years</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h4 class="subtitle is-4">Total Base Salary: {{ basicTotal | currency('$', 0) }}/yr</h4>
