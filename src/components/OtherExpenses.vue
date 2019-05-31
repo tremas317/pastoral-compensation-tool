@@ -2,175 +2,137 @@
   <div class="section">
     <h2 class="title is-2">Other Expenses</h2>
 
-    <div class="field">
-      <label class="label">Will the church assist in the education of his children? If so, how much?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.childrensEducation"
-              v-bind:class="{ 'is-danger': otherLocal.childrensEducation === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-school"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Month</a>
+    <div class="container">
+      <div class="field">
+        <label
+          class="label"
+        >Will the church assist in the education of his children? If so, how much?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.childrensEducation">
+              <span class="icon is-small is-left">
+                <i class="fas fa-school"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Month</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.childrensEducation === ''">Please enter a number</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label
-        class="label"
-      >How much will the church contribute each month toward the discharge of student loan or other debt the family caries?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.debt"
-              v-bind:class="{ 'is-danger': otherLocal.debt === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-hand-holding-usd"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Month</a>
+      <div class="field">
+        <label
+          class="label"
+        >How much will the church contribute each month toward the discharge of student loan or other debt the family caries?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.debt">
+              <span class="icon is-small is-left">
+                <i class="fas fa-hand-holding-usd"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Month</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.debt === ''">Please enter a number</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">How much should the pastor spend on books and periodical journals?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.books"
-              v-bind:class="{ 'is-danger': otherLocal.books === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-book"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Year</a>
+      <div class="field">
+        <label class="label">How much should the pastor spend on books and periodical journals?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.books">
+              <span class="icon is-small is-left">
+                <i class="fas fa-book"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.books === ''">Please enter a number</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label
-        class="label"
-      >How much should the pastor spend on continuing education (conferences, classes, etc.)?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.classes"
-              v-bind:class="{ 'is-danger': otherLocal.classes === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-chalkboard-teacher"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Year</a>
+      <div class="field">
+        <label
+          class="label"
+        >How much should the pastor spend on continuing education (conferences, classes, etc.)?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.classes">
+              <span class="icon is-small is-left">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.classes === ''">Please enter a number</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label
-        class="label"
-      >A laptop is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.computer"
-              v-bind:class="{ 'is-danger': otherLocal.computer === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-laptop"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/3 Years</a>
+      <div class="field">
+        <label
+          class="label"
+        >A laptop is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.computer">
+              <span class="icon is-small is-left">
+                <i class="fas fa-laptop"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/3 Years</a>
+            </div>
           </div>
+          <p
+            class="help"
+          >The calculation will divide the 3 year replacement figure into an annual sum.</p>
         </div>
-        <p class="help is-danger" v-if="otherLocal.computer === ''">Please enter a number</p>
-        <p
-          class="help"
-        >The calculation will divide the 3 year replacement figure into an annual sum.</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label
-        class="label"
-      >A cellphone is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              type="number"
-              v-model.number="otherLocal.cellphone"
-              v-bind:class="{ 'is-danger': otherLocal.cellphone === '' }"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-mobile"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Month</a>
+      <div class="field">
+        <label
+          class="label"
+        >A cellphone is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.cellphone">
+              <span class="icon is-small is-left">
+                <i class="fas fa-mobile"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Month</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.cellphone === ''">Please enter a number</p>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">Are there other expenses the church would like to help with?</label>
-      <div class="control">
-        <div class="field has-addons">
-          <p class="control has-icons-left">
-            <input
-              class="input"
-              v-bind:class="{ 'is-danger': otherLocal.other === '' }"
-              type="number"
-              v-model.number="otherLocal.other"
-            >
-            <span class="icon is-small is-left">
-              <i class="fas fa-ellipsis-h"></i>
-            </span>
-          </p>
-          <div class="control">
-            <a class="button is-static">$/Year</a>
+      <div class="field">
+        <label class="label">Are there other expenses the church would like to help with?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.other">
+              <span class="icon is-small is-left">
+                <i class="fas fa-ellipsis-h"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
           </div>
         </div>
-        <p class="help is-danger" v-if="otherLocal.other === ''">Please enter a number</p>
       </div>
     </div>
 
@@ -195,5 +157,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.container {
+  background: #d5eed2;
+  padding: 10px;
+}
 </style>
