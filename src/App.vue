@@ -141,10 +141,14 @@ export default {
       let medicare = parseInt(this.computedSalary.healthcare.medicare) || 0;
       let socialSecurity =
         parseInt(this.computedSalary.healthcare.socialSecurity) || 0;
-      let retirementContribution =
-        ((parseInt(this.basicTotal.total) || 0) +
-          (parseInt(this.housingTotal.total) || 0)) *
-        (1 / (parseInt(this.salary.healthcare.pensionPercent) || 0));
+
+      let retirementContribution = 0;
+      if ((parseInt(this.salary.healthcare.pensionPercent) || 0) !== 0) {
+        retirementContribution =
+          ((parseInt(this.basicTotal.total) || 0) +
+            (parseInt(this.housingTotal.total) || 0)) *
+          (1 / (parseInt(this.salary.healthcare.pensionPercent) || 0));
+      }
 
       return {
         total:
