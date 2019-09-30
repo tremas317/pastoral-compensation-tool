@@ -57,7 +57,7 @@
           </div>
           <p
             class="help"
-          >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishing, grounds maintenance, home repairs and improvements, and pest control, for example</p>
+          >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishings, grounds maintenance, home repairs and improvements, and pest control, etc.</p>
         </div>
       </div>
 

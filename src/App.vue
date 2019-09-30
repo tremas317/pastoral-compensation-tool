@@ -62,7 +62,10 @@ export default {
           healthInsurace: 350,
           lifeInsurance: 50,
           disabilityInsurance: 100,
-          isOptedOut: "Yes",
+          isOptedOut: "No",
+          OptOutYesString: "How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement pension account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?",
+          OptOutNoString: "What is the church's share of the cost of a minister's social security and medicare taxes on a yearly basis?",
+          OptOutNoLabel: "Since ministers are to pay social security and medicare taxes as mandated by SECA (as self-employed workers), they are to make the full contribution. The ongoing recommendation has been that churches pay one half of a minister's social security and medicare taxes in the form of increased salary.",
           pensionPercent: 10
         },
         other: {

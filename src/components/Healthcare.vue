@@ -1,8 +1,82 @@
 <template>
   <div class="section">
-    <h2 class="title is-2">Healthcare & Retirement</h2>
+    <h2 class="title is-2">Retirement & Healthcare</h2>
 
     <div class="container">
+      <h4 class="title is-4">Retirement</h4>
+
+      <div class="field">
+        <label class="label">Has the minister opted out of Social Security?</label>
+        <p class="control">
+          <span class="select">
+            <select v-model="healthcareLocal.isOptedOut">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </span>
+        </p>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
+        <label class="label">What is the church's share of the cost of a minister's social security and medicare taxes on a yearly basis?</label>
+        <p class="help">
+          Since ministers are to pay social security and medicare taxes as mandated by SECA (as self-employed workers), they are to make the full contribution. The ongoing recommendation has been that churches pay one half of a minister's social security and medicare taxes in the form of increased salary.
+        </p>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'Yes'">
+        <label class="label">How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement pension account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?</label>
+      </div>
+
+      <div class="field">
+        <label class="label">Medicare:</label>
+        <p class="control has-icons-left">
+          <input
+            class="input is-static"
+            type="number"
+            v-model.number="computedHealthcare.medicare"
+            readonly
+          >
+          <span class="icon is-small is-left">
+            <i class="fas fa-user-md"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="label">Social Security:</label>
+        <p class="control has-icons-left">
+          <input
+            class="input is-static"
+            type="number"
+            v-model.number="computedHealthcare.socialSecurity"
+            readonly
+          >
+          <span class="icon is-small is-left">
+            <i class="fas fa-money-bill"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <label
+          class="label"
+        >The OPC recommends that the church contribute 10% of a man's basic package (salary + housing) in a retirement account as a pension. What percent will your church contribute?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="healthcareLocal.pensionPercent">
+              <span class="icon is-small is-left">
+                <i class="fas fa-percent"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">Percent</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <h4 class="title is-4">Insurance</h4>
       <div class="field">
         <label class="label">How much will his healthcare cost monthly?</label>
@@ -68,69 +142,6 @@
           <p
             class="help"
           >Disability insurance is a very inexpensive way of guarding both the pastor’s care and the church’s budget. How much will his monthly premiums be? Note: this should be included in his salary and taxed.</p>
-        </div>
-      </div>
-
-      <h4 class="title is-4">Retirement</h4>
-
-      <div class="field">
-        <label class="label">How much will his medicare cost yearly?</label>
-        <p class="control has-icons-left">
-          <input
-            class="input is-static"
-            type="number"
-            v-model.number="computedHealthcare.medicare"
-            readonly
-          >
-          <span class="icon is-small is-left">
-            <i class="fas fa-user-md"></i>
-          </span>
-        </p>
-      </div>
-
-      <div class="field">
-        <label class="label">How much will his social security cost yearly?</label>
-        <p class="control has-icons-left">
-          <input
-            class="input is-static"
-            type="number"
-            v-model.number="computedHealthcare.socialSecurity"
-            readonly
-          >
-          <span class="icon is-small is-left">
-            <i class="fas fa-money-bill"></i>
-          </span>
-        </p>
-      </div>
-
-      <div class="field">
-        <label class="label">Has the minister opted out of Social Security?</label>
-        <p class="control">
-          <span class="select">
-            <select v-model="healthcareLocal.isOptedOut">
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </span>
-        </p>
-      </div>
-
-      <div class="field">
-        <label
-          class="label"
-        >The OPC recommends that the church contribute 10% of a man's basic package (salary + housing) in a retirement account as a pension. What percent will your church contribute?</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.pensionPercent">
-              <span class="icon is-small is-left">
-                <i class="fas fa-percent"></i>
-              </span>
-            </p>
-            <div class="control">
-              <a class="button is-static">Percent</a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
