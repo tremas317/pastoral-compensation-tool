@@ -147,7 +147,7 @@ export default {
         retirementContribution =
           ((parseInt(this.basicTotal.total) || 0) +
             (parseInt(this.housingTotal.total) || 0)) *
-          (1 / (parseInt(this.salary.healthcare.pensionPercent) || 0));
+          ((parseInt(this.salary.healthcare.pensionPercent) || 0) / 100);
       }
 
       return {
@@ -220,4 +220,3 @@ $input-background-color: whitesmoke;
 
 @import "~bulma/bulma";
 </style>
-
