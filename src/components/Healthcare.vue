@@ -18,17 +18,12 @@
       </div>
 
       <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
-        <label class="label">What is the church's share of the cost of a minister's social security and medicare taxes on a yearly basis?</label>
-        <p class="help">
-          Since ministers are to pay social security and medicare taxes as mandated by SECA (as self-employed workers), they are to make the full contribution. The ongoing recommendation has been that churches pay one half of a minister's social security and medicare taxes in the form of increased salary.
-        </p>
+        <label class="label">
+          Since ministers are to pay social security and medicare taxes as mandated by SECA (as self-employed workers), they are to make the full contribution. The minister's social security and medicare taxes (calculated from base salary and housing allowance) are as follows:
+        </label>
       </div>
 
-      <div class="field" v-if="healthcareLocal.isOptedOut === 'Yes'">
-        <label class="label">How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement pension account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?</label>
-      </div>
-
-      <div class="field">
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
         <label class="label">Medicare:</label>
         <p class="control has-icons-left">
           <input
@@ -43,7 +38,7 @@
         </p>
       </div>
 
-      <div class="field">
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
         <label class="label">Social Security:</label>
         <p class="control has-icons-left">
           <input
@@ -56,6 +51,62 @@
             <i class="fas fa-money-bill"></i>
           </span>
         </p>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
+        <label class="label">Total SECA Taxes:</label>
+        <p class="control has-icons-left">
+          <input
+            class="input is-static"
+            type="number"
+            v-model.number="computedHealthcare.totalSECA"
+            readonly
+          >
+          <span class="icon is-small is-left">
+            <i class="fas fa-money-bill"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
+        <label class="label"><u>The ongoing recommendation has been that churches pay one half of a minister's social security and medicare taxes in the form of increased salary.</u></label>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'No'">
+        <label class="label">What percent will the church contribute in increased salary toward helping the minister pay his SECA taxes? </label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="healthcareLocal.SECAPercent">
+              <span class="icon is-small is-left">
+                <i class="fas fa-percent"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">Percent</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" v-if="healthcareLocal.isOptedOut === 'Yes'">
+        <label class="label">How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement pension account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="healthcareLocal.optOutContribution">
+              <span class="icon is-small is-left">
+                <i class="fas fa-money-bill"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
+          </div>
+          <p
+            class="help"
+          >Recommended Amount: ${{ computedHealthcare.halfSECA }} (One half of SECA Taxes)</p>
+        </div>
       </div>
 
       <div class="field">

@@ -45,6 +45,10 @@
             </thead>
             <tbody>
               <tr>
+                <td>Opted Out of Social Security?</td>
+                <td>{{ isOptedOut }}</td>
+              </tr>
+              <tr>
                 <td>Medical Care</td>
                 <td>{{ healthcareSalary.medicalCare | currency('$', 0) }}</td>
               </tr>
@@ -56,13 +60,17 @@
                 <td>Disability Insurance</td>
                 <td>{{ healthcareSalary.disabilityInsurance | currency('$', 0) }}</td>
               </tr>
-              <tr>
+              <tr v-if="isOptedOut=='No'">
                 <td>Medicare</td>
                 <td>{{ healthcareSalary.medicare | currency('$', 0) }}</td>
               </tr>
-              <tr>
+              <tr v-if="isOptedOut=='No'">
                 <td>Social Security</td>
                 <td>{{ healthcareSalary.socialSecurity | currency('$', 0) }}</td>
+              </tr>
+              <tr v-if="isOptedOut=='Yes'">
+                <td>SECA Taxes Contribution</td>
+                <td>{{ healthcareSalary.optOutContribution | currency('$', 0) }}</td>
               </tr>
               <tr>
                 <td>Retirement Contribution</td>
@@ -173,7 +181,8 @@ export default {
     "housingSalary",
     "healthcareSalary",
     "otherSalary",
-    "totalSalary"
+    "totalSalary",
+    "isOptedOut"
   ],
   methods: {
     print() {

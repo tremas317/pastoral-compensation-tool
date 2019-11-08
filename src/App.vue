@@ -22,6 +22,7 @@
         :healthcareSalary="healthcareTotal"
         :otherSalary="otherTotal"
         :totalSalary="totalPackage"
+        :isOptedOut.sync="salary.healthcare.isOptedOut"
       />
     </div>
   </section>
@@ -63,6 +64,8 @@ export default {
           lifeInsurance: 50,
           disabilityInsurance: 100,
           isOptedOut: "No",
+          SECAPercent: 50,
+          optOutContribution: 0,
           pensionPercent: 10
         },
         other: {
@@ -81,8 +84,10 @@ export default {
     computedSalary() {
       return {
         healthcare: {
-          medicare: Math.ceil(this.basicTotal.total * 0.0145),
-          socialSecurity: Math.ceil(this.basicTotal.total * 0.062)
+          medicare: Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.029),
+          socialSecurity: Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.124),
+          totalSECA: Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.029) + Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.124),
+          halfSECA: Math.ceil((Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.029) + Math.ceil((this.basicTotal.total + this.housingTotal.total) * 0.124)) / 2)
         }
       };
     },
@@ -90,13 +95,13 @@ export default {
       let basicLivingExpenses = 0;
       if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
         basicLivingExpenses +=
-          12140 + 4320 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+          18735 + 6630 * ((parseInt(this.salary.basic.persons) || 0) - 1);
       } else if (this.salary.basic.region == "Alaska") {
         basicLivingExpenses +=
-          15180 + 5400 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+          23400 + 8295 * ((parseInt(this.salary.basic.persons) || 0) - 1);
       } else if (this.salary.basic.region == "Hawaii") {
         basicLivingExpenses +=
-          13960 + 4970 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+          21570 + 7620 * ((parseInt(this.salary.basic.persons) || 0) - 1);
       }
 
       let experienceAdjustment = 0;
@@ -138,9 +143,10 @@ export default {
         (parseInt(this.salary.healthcare.lifeInsurance) || 0) * 12;
       let disabilityInsurance =
         (parseInt(this.salary.healthcare.disabilityInsurance) || 0) * 12;
-      let medicare = parseInt(this.computedSalary.healthcare.medicare) || 0;
+      let medicare = parseInt(this.computedSalary.healthcare.medicare * (this.salary.healthcare.SECAPercent / 100)) || 0;
       let socialSecurity =
-        parseInt(this.computedSalary.healthcare.socialSecurity) || 0;
+        parseInt(this.computedSalary.healthcare.socialSecurity * (this.salary.healthcare.SECAPercent / 100)) || 0;
+      let optOutContribution = parseInt(this.salary.healthcare.optOutContribution) || 0;
 
       let retirementContribution = 0;
       if ((parseInt(this.salary.healthcare.pensionPercent) || 0) !== 0) {
@@ -150,21 +156,37 @@ export default {
           ((parseInt(this.salary.healthcare.pensionPercent) || 0) / 100);
       }
 
-      return {
-        total:
-          medicalCare +
-          lifeInsurace +
-          disabilityInsurance +
-          medicare +
-          socialSecurity +
-          retirementContribution,
-        medicalCare: medicalCare,
-        lifeInsurance: lifeInsurace,
-        disabilityInsurance: disabilityInsurance,
-        medicare: medicare,
-        socialSecurity: socialSecurity,
-        retirementContribution: retirementContribution
-      };
+      if (this.salary.healthcare.isOptedOut == "No") {
+        return {
+          total:
+            medicalCare +
+            lifeInsurace +
+            disabilityInsurance +
+            medicare +
+            socialSecurity +
+            retirementContribution,
+          medicalCare: medicalCare,
+          lifeInsurance: lifeInsurace,
+          disabilityInsurance: disabilityInsurance,
+          medicare: medicare,
+          socialSecurity: socialSecurity,
+          retirementContribution: retirementContribution
+        }
+      } else {
+        return {
+          total:
+            medicalCare +
+            lifeInsurace +
+            disabilityInsurance +
+            optOutContribution +
+            retirementContribution,
+          medicalCare: medicalCare,
+          lifeInsurance: lifeInsurace,
+          disabilityInsurance: disabilityInsurance,
+          optOutContribution: optOutContribution,
+          retirementContribution: retirementContribution
+        };
+      }
     },
     otherTotal() {
       let educationAllowance =
