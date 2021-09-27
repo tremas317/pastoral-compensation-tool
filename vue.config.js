@@ -1,4 +1,4 @@
 module.exports = {
   publicPath:
-    process.env.NODE_ENV === "production" ? "/test-pastoral-compensation-tool/" : "/"
+    process.env.NODE_ENV === "production" ? "/pastoral-compensation-tool/" : "/"
 };

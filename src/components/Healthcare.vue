@@ -1,8 +1,8 @@
 <template>
   <div class="section">
-    <h2 class="title is-2">Retirement & Healthcare</h2>
+    <h2 class="title is-3">Retirement & Insurance Benefits</h2>
 
-    <div class="container">
+    <div class="container box">
       <h4 class="title is-4">Retirement</h4>
 
       <div class="field">
@@ -199,7 +199,7 @@
 
     <h4
       class="subtitle is-4"
-    >Total Health/Life Insurance and Retirement: {{ healthcareTotal | currency('$', 0) }}/yr</h4>
+    >Total Retirement and Insurance Benefits: {{ healthcareTotal | currency('$', 0) }}/yr</h4>
   </div>
 </template>
 
@@ -222,7 +222,7 @@ export default {
 
 <style scoped>
 .container {
-  background: #d5eed2;
+  background: #eeeeee;
   padding: 10px;
 }
 </style>

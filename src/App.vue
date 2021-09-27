@@ -1,7 +1,24 @@
 <template>
   <section class="section" id="app">
     <div class="container">
-      <h1 class="title is-1">Pastoral Compensation Tool</h1>
+      <section class="hero is-small" style="background-image: url(https://opccmc.org/wp-content/uploads/2019/08/green-bg.png?id=97)">
+        <div class="hero-body">
+            <p class="title has-text-white">
+            Pastoral Compensation Tool
+            </p>
+            <p class="subtitle has-text-white">
+            A Service of The Committee on Ministerial Care
+            of the Orthodox Presbyterian Church
+            </p>
+        </div>
+        </section>
+        
+        <p style="padding-bottom: 6px; padding-left: 24px; padding-top: 30px;"><span style="font-weight: bold; font-size: 1.2em;">User Disclosure:</span> The Pastoral Compensation Tool is designed to assist ministers, sessions, and presbyteries in assessing whether the terms of a minister’s call enable him to be free of worldly care and concern.</p>        
+        <p style="padding-bottom: 6px; padding-left: 24px;">There is no one-size-fits-all approach to creating a call that is applicable in every situation.</p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2021/07/Compensation-Tool-Guidelines-rev-5-2021.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        
       <BasicSalary :basic.sync="salary.basic" :basicTotal="basicTotal.total"/>
       <HousingAllowance :housing.sync="salary.housing" :housingTotal="housingTotal.total"/>
       <Healthcare
@@ -10,13 +27,33 @@
         :healthcareTotal="healthcareTotal.total"
       />
       <OtherExpenses :other.sync="salary.other" :otherTotal="otherTotal.total"/>
-      <div class="section">
+      
+      <div class="section box" style="background-color:#eeeeee" id=CallPosition>
         <h3
-          class="subtitle is-3 has-text-weight-bold"
+          class="subtitle is-4 has-text-weight-bold" 
         >Total Package: {{ totalPackage | currency('$', 0) }}/yr</h3>
       </div>
+      <div v-if="salary.report.showCallVue">
+      <CallLetter :call.sync="salary.call" 
+        :salary="basicTotal.total"
+        :housing="housingTotal.total"
+        :medical="healthcareTotal.medicalCare"
+        :life="healthcareTotal.lifeInsurance"
+        :disability="healthcareTotal.disabilityInsurance"
+        :pension="healthcareTotal.retirementContribution"
+        :seca="healthcareTotal.seca"
+        :bookAllowance="otherTotal.bookAllowance"
+        :continueEdAllowance="otherTotal.continuingEducation"
+        :computerAllowance="otherTotal.computerAllowance"
+        :phoneAllowance="otherTotal.phoneAllowance"
+        :vehicleAllowance="otherTotal.vehicleAllowance"
+        :childEdAllowance="otherTotal.educationAllowance"
+        :debtAllowance="otherTotal.debtDischargeAssistance"
+        :otherAllowance="otherTotal.otherPackageAdjustment"        
+      />
+      </div>
 
-      <Report
+      <Report :report.sync="salary.report"
         :basicSalary="basicTotal"
         :housingSalary="housingTotal"
         :healthcareSalary="healthcareTotal"
@@ -29,10 +66,12 @@
 </template>
 
 <script>
+
 import BasicSalary from "./components/BasicSalary";
 import HousingAllowance from "./components/HousingAllowance";
 import Healthcare from "./components/Healthcare";
 import OtherExpenses from "./components/OtherExpenses";
+import CallLetter from "./components/CallLetter";
 import Report from "./components/Report";
 
 export default {
@@ -42,7 +81,8 @@ export default {
     HousingAllowance,
     Healthcare,
     OtherExpenses,
-    Report
+    Report,
+    CallLetter
   },
   data() {
     return {
@@ -75,7 +115,23 @@ export default {
           classes: 250,
           computer: 2000,
           cellphone: 60,
+          vehicle: 0,
           other: 0
+        },
+        report: {
+           showCallVue: false
+        },
+        call: {
+         pastorName: "Rev. John Doe",
+         churchName: "First Presbyterian Church",
+         churchCity: "Willow Grove",
+         churchState: "PA",
+         includeClause: "",
+         weeksVacation: 4,
+         weeksStudyLeave: 1,
+         sabbaticalYears: 7,
+         stateOptions: ["", "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO","MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
+         app: "PastoralCompensationTool",
         }
       }
     };
@@ -170,7 +226,8 @@ export default {
           disabilityInsurance: disabilityInsurance,
           medicare: medicare,
           socialSecurity: socialSecurity,
-          retirementContribution: retirementContribution
+          retirementContribution: retirementContribution,
+          seca: socialSecurity + medicare
         }
       } else {
         return {
@@ -184,7 +241,8 @@ export default {
           lifeInsurance: lifeInsurace,
           disabilityInsurance: disabilityInsurance,
           optOutContribution: optOutContribution,
-          retirementContribution: retirementContribution
+          retirementContribution: retirementContribution,
+          seca: optOutContribution
         };
       }
     },
@@ -197,6 +255,7 @@ export default {
       let continuingEducation = parseInt(this.salary.other.classes) || 0;
       let computerAllowance = (parseInt(this.salary.other.computer) || 0) / 3;
       let phoneAllowance = (parseInt(this.salary.other.cellphone) || 0) * 12;
+      let vehicleAllowance = (parseInt(this.salary.other.vehicle) || 0) * 12;
       let otherPackageAdjustment = parseInt(this.salary.other.other) || 0;
 
       return {
@@ -207,6 +266,7 @@ export default {
           continuingEducation +
           computerAllowance +
           phoneAllowance +
+          vehicleAllowance +
           otherPackageAdjustment,
         educationAllowance: educationAllowance,
         debtDischargeAssistance: debtDischargeAssistance,
@@ -214,6 +274,7 @@ export default {
         continuingEducation: continuingEducation,
         computerAllowance: computerAllowance,
         phoneAllowance: phoneAllowance,
+        vehicleAllowance: vehicleAllowance,
         otherPackageAdjustment: otherPackageAdjustment
       };
     },

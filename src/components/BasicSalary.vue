@@ -1,8 +1,8 @@
 <template>
   <div class="section">
-    <h2 class="title is-2">Basic Salary</h2>
+    <h2 class="title is-3">Basic Salary</h2>
 
-    <div class="container">
+    <div class="container box">
       <div class="field">
         <label class="label">This call is applicable to:</label>
         <p class="control has-icons-left">
@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 .container {
-  background: #d5eed2;
+  background: #eeeeee;
   padding: 10px;
 }
 </style>

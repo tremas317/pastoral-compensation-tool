@@ -1,12 +1,109 @@
 <template>
   <div class="section">
-    <h2 class="title is-2">Other Expenses</h2>
+    <h2 class="title is-3">Other Expenses</h2>
 
-    <div class="container">
+    <div class="container box">
+    
+      <div class="field">
+        <label class="label">How much should the pastor spend on books and periodical journals?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.books">
+              <span class="icon is-small is-left">
+                <i class="fas fa-book"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
+          </div>
+        </div>
+      </div>    
+    
       <div class="field">
         <label
           class="label"
-        >Will the church assist in the education of his children? If so, how much?</label>
+        >How much should the pastor spend on continuing education (conferences, classes, etc.)?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.classes">
+              <span class="icon is-small is-left">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Year</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label
+          class="label"
+        >A laptop is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.computer">
+              <span class="icon is-small is-left">
+                <i class="fas fa-laptop"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/3 Years</a>
+            </div>
+          </div>
+          <p
+            class="help"
+          >The calculation will divide the 3 year replacement figure into an annual sum.</p>
+        </div>
+      </div>
+    
+      <div class="field">
+        <label
+          class="label"
+        >A cellphone is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.cellphone">
+              <span class="icon is-small is-left">
+                <i class="fas fa-mobile"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Month</a>
+            </div>
+          </div>
+        </div>
+      </div>   
+    
+      <div class="field">
+        <label
+          class="label"
+        >If the church plans to assist in providing a vehicle, indicate the monthly amount below:</label>
+        <div class="control">
+          <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="otherLocal.vehicle">
+              <span class="icon is-small is-left">
+                <i class="fas fa-car"></i>
+              </span>
+            </p>
+            <div class="control">
+              <a class="button is-static">$/Month</a>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+      <div class="field">
+        <label
+          class="label"
+        >If the church plans to assist in the education expenses for his children, indicate the monthly amount below:</label>
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
@@ -32,83 +129,6 @@
               <input class="input" type="number" v-model.number="otherLocal.debt">
               <span class="icon is-small is-left">
                 <i class="fas fa-hand-holding-usd"></i>
-              </span>
-            </p>
-            <div class="control">
-              <a class="button is-static">$/Month</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">How much should the pastor spend on books and periodical journals?</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.books">
-              <span class="icon is-small is-left">
-                <i class="fas fa-book"></i>
-              </span>
-            </p>
-            <div class="control">
-              <a class="button is-static">$/Year</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label
-          class="label"
-        >How much should the pastor spend on continuing education (conferences, classes, etc.)?</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.classes">
-              <span class="icon is-small is-left">
-                <i class="fas fa-chalkboard-teacher"></i>
-              </span>
-            </p>
-            <div class="control">
-              <a class="button is-static">$/Year</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label
-          class="label"
-        >A laptop is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.computer">
-              <span class="icon is-small is-left">
-                <i class="fas fa-laptop"></i>
-              </span>
-            </p>
-            <div class="control">
-              <a class="button is-static">$/3 Years</a>
-            </div>
-          </div>
-          <p
-            class="help"
-          >The calculation will divide the 3 year replacement figure into an annual sum.</p>
-        </div>
-      </div>
-
-      <div class="field">
-        <label
-          class="label"
-        >A cellphone is almost certainly a non-expendable tool for his ministry. If the church is not outright providing one, will you help him financially to keep one functional?</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.cellphone">
-              <span class="icon is-small is-left">
-                <i class="fas fa-mobile"></i>
               </span>
             </p>
             <div class="control">
@@ -159,7 +179,7 @@ export default {
 
 <style scoped>
 .container {
-  background: #d5eed2;
+  background: #eeeeee;
   padding: 10px;
 }
 </style>

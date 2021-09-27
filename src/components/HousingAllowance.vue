@@ -1,8 +1,8 @@
 <template>
   <div class="section">
-    <h2 class="title is-2">Housing Allowance</h2>
+    <h2 class="title is-3">Housing Allowance</h2>
 
-    <div class="container">
+    <div class="container box">
       <div class="field">
         <label
           class="label"
@@ -102,7 +102,7 @@ export default {
 
 <style scoped>
 .container {
-  background: #d5eed2;
+  background: #eeeeee;
   padding: 10px;
 }
 </style>
