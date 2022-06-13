@@ -216,6 +216,16 @@ function formatDollar(text) {
     
 }
 
+function formatNumber(text, prec) {
+    var num = 0;
+    if (prec == 0) 
+        num = Number.parseInt(text);
+    else if (prec > 0)
+        num = Number.parseFloat(text);
+    if (isNaN(num)) num = 0;
+    return num.toFixed(prec);
+}
+
 export default {
   name: "CallLetter",
   props: [
@@ -261,7 +271,7 @@ export default {
             document.getElementById('errorClauseRequired').classList.remove("is-hidden");
             document.getElementById('selClause').focus();
             return;
-        }
+        }          
         
         var request = require('request');
         var timestamp = Date.now();
@@ -288,7 +298,7 @@ export default {
             if (this.continueEdAllowance > 0)
                 otherExp = otherExp + 'a continuing education allowance of ' + formatDollar(this.continueEdAllowance) + ', ';
             if (this.computerAllowance > 0)
-                otherExp = otherExp + 'a computer education allowance of ' + formatDollar(this.computerAllowance) + ', ';
+                otherExp = otherExp + 'a computer allowance of ' + formatDollar(this.computerAllowance) + ', ';
             if (this.phoneAllowance > 0)
                 otherExp = otherExp + 'a phone allowance of ' + formatDollar(this.phoneAllowance) + ', ';
             if (this.vehicleAllowance > 0)
@@ -327,16 +337,16 @@ export default {
             'City': this.call.churchCity,
             'State': this.call.churchState,
             'OutputFormat': format,
-            'Salary': this.salary.toFixed(2),
-            'HousingAllowance': this.housing.toFixed(2),
-            'Medical': this.medical.toFixed(2),
-            'Life': this.life.toFixed(2),
-            'Disability': this.disability.toFixed(2),
-            'Pension': this.pension.toFixed(2),
-            'SECA': this.seca.toFixed(2),
-            'Vacation': this.call.weeksVacation.toFixed(0),
-            'StudyLeave': this.call.weeksStudyLeave.toFixed(0),
-            'Sabbatical': this.call.sabbaticalYears.toFixed(0),
+            'Salary': formatNumber(this.salary, 2),
+            'HousingAllowance': formatNumber(this.housing, 2),
+            'Medical': formatNumber(this.medical, 2),
+            'Life': formatNumber(this.life, 2),
+            'Disability': formatNumber(this.disability, 2),
+            'Pension': formatNumber(this.pension, 2),
+            'SECA': formatNumber(this.seca, 2),
+            'Vacation': formatNumber(this.call.weeksVacation, 0),
+            'StudyLeave': formatNumber(this.call.weeksStudyLeave, 0),
+            'Sabbatical': formatNumber(this.call.sabbaticalYears, 0),
             'WorldlyCareClause': this.call.includeClause,
             'OtherExpenses': otherExp,
             'InsuranceMessage': insuranceMessage,
@@ -373,9 +383,6 @@ export default {
           
           
         });
-        
-
-        
 
     },
     

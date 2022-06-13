@@ -17,9 +17,14 @@
         <p style="padding-bottom: 6px; padding-left: 24px;">There is no one-size-fits-all approach to creating a call that is applicable in every situation.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2021/07/Compensation-Tool-Guidelines-rev-5-2021.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2022 Federal Poverty Guidelines, and some adjustments have been made to calculating base salary based on household and years of experience.  Click the Instruction Sheet link below for a fuller explanation.</p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2022/02/Compensation-Tool-Guidelines-rev-2-2022.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
-      <BasicSalary :basic.sync="salary.basic" :basicTotal="basicTotal.total"/>
+      <BasicSalary :basic.sync="salary.basic" 
+        :basicTotal="basicTotal.total"
+        :basicLivingExpenses="basicTotal.basicLivingExpenses"
+        :experienceAdjustment="basicTotal.experienceAdjustment"
+      />
       <HousingAllowance :housing.sync="salary.housing" :housingTotal="housingTotal.total"/>
       <Healthcare
         :healthcare.sync="salary.healthcare"
@@ -149,25 +154,61 @@ export default {
     },
     basicTotal() {
       let basicLivingExpenses = 0;
+      let baseAmount = 0;
+      let stepAmount = 0;
+      
+      // Base amount is federal poverty guideline * 1.5.  Size amount is federal poverty step amount.
       if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
-        basicLivingExpenses +=
-          18735 + 6630 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+        baseAmount = 13590.0 * 1.5;
+        stepAmount = 4720.0;
       } else if (this.salary.basic.region == "Alaska") {
-        basicLivingExpenses +=
-          23400 + 8295 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+        baseAmount = 16990.0 * 1.5;
+        stepAmount = 5900.0;
       } else if (this.salary.basic.region == "Hawaii") {
-        basicLivingExpenses +=
-          21570 + 7620 * ((parseInt(this.salary.basic.persons) || 0) - 1);
+        baseAmount = 15630.0 * 1.5;
+        stepAmount = 5430.0;
       }
-
+      
+      let size = parseInt(this.salary.basic.persons);
+      
+      // Rules:
+      // Min. household size = 2.
+      // For step amount, multipler is:
+      //   1.5 for first three
+      //   1.25 for next two
+      //   1 for all others
+      
+      if (size <= 2) {
+        basicLivingExpenses = baseAmount + (stepAmount * 1.5 * 1);
+      } else if (size == 3) {
+        basicLivingExpenses = baseAmount + (stepAmount * 1.5 * 2);
+      } else if (size <= 5) {
+        basicLivingExpenses = baseAmount + (stepAmount * 1.5 * 2) + (stepAmount * 1.25 * (size - 3));
+      } else {
+        basicLivingExpenses = baseAmount + (stepAmount * 1.5 * 2) + (stepAmount * 1.25 * 2) + (stepAmount * (size - 5));
+      }
+      
+      basicLivingExpenses = Math.round(basicLivingExpenses);
+      
+      // Experience adjustment is limited to 60 years
       let experienceAdjustment = 0;
-      if ((parseInt(this.salary.basic.yearsOfService) || 0) !== 0) {
-        experienceAdjustment +=
-          (parseInt(this.salary.basic.yearsOfService) || 0) *
-          0.03 *
-          basicLivingExpenses;
+      let experienceYears = parseInt(this.salary.basic.yearsOfService);
+      
+      if (experienceYears > 60) {
+        experienceYears = 60;
       }
-
+      
+      // Use compound interest formula: 
+      // P = household size of 2 ($27465)
+      // I = 3%
+      // T = # of years
+      // From this result, subtract the initial principal amount to get the experience adjustment.
+     
+      if (experienceYears > 0) {
+        experienceAdjustment = Math.round((baseAmount + (stepAmount * 1.5)) * Math.pow(1.03, experienceYears)
+                                    - (baseAmount + (stepAmount * 1.5)));
+      }
+            
       return {
         total: basicLivingExpenses + experienceAdjustment,
         basicLivingExpenses: basicLivingExpenses,

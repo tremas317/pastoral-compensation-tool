@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h2 class="title is-3">Basic Salary</h2>
+    <h2 class="title is-3">Base Salary</h2>
 
     <div class="container box">
       <div class="field">
@@ -26,7 +26,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="basicLocal.persons">
+              <input class="input" type="number" min="1" max="20" v-model.number="basicLocal.persons">              
               <span class="icon is-small is-left">
                 <i class="fas fa-users"></i>
               </span>
@@ -56,6 +56,7 @@
       </div>
     </div>
 
+    <h5 class="subtitle is-5">Household Size: {{ basicLivingExpenses | currency('$', 0) }} + Years of Experience: {{ experienceAdjustment | currency('$', 0) }} </h5>
     <h4 class="subtitle is-4">Total Base Salary: {{ basicTotal | currency('$', 0) }}/yr</h4>
   </div>
 </template>
@@ -63,7 +64,7 @@
 <script>
 export default {
   name: "BasicSalary",
-  props: ["basic", "basicTotal"],
+  props: ["basic", "basicTotal", "basicLivingExpenses", "experienceAdjustment" ],
   computed: {
     basicLocal: {
       get: function() {
@@ -75,6 +76,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style scoped>

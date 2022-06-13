@@ -90,7 +90,7 @@
       </div>
 
       <div class="field" v-if="healthcareLocal.isOptedOut === 'Yes'">
-        <label class="label">How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement pension account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?</label>
+        <label class="label">How much will the church contribute on a yearly basis toward a minister's retirement in addition to the regular contribution to the minister’s retirement account (as though he was in social security and the church was paying one half of his social security and medicare taxes)?</label>
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
@@ -112,7 +112,7 @@
       <div class="field">
         <label
           class="label"
-        >The OPC recommends that the church contribute 10% of a man's basic package (salary + housing) in a retirement account as a pension. What percent will your church contribute?</label>
+        >The OPC recommends that the church contribute 10% of a man's basic package (salary + housing) in a retirement account. What percent will your church contribute?</label>
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
