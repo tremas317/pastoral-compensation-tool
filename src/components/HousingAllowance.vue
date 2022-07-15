@@ -10,7 +10,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="housingLocal.monthlyRent">
+              <input class="input" type="number" min="0" max="100000" v-model.number="housingLocal.monthlyRent" v-validate="" name="Rent">
               <span class="icon is-small is-left">
                 <i class="fas fa-home"></i>
               </span>
@@ -20,6 +20,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Rent') }}</span>            
       </div>
 
       <div class="field">
@@ -29,7 +30,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="housingLocal.insurance">
+              <input class="input" type="number" min="0" max="10000" v-model.number="housingLocal.insurance" v-validate="" name="HomeIns">
               <span class="icon is-small is-left">
                 <i class="fas fa-house-damage"></i>
               </span>
@@ -39,6 +40,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('HomeIns') }}</span>            
       </div>
 
       <div class="field">
@@ -46,7 +48,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="housingLocal.utilities">
+              <input class="input" type="number" min="0" max="10000" v-model.number="housingLocal.utilities" v-validate="" name="Utilities">
               <span class="icon is-small is-left">
                 <i class="fas fa-lightbulb"></i>
               </span>
@@ -59,6 +61,7 @@
             class="help"
           >The Housing Allowance shall include all utilities and other house-related items recognized by the IRS as being covered under the Allowance stipulation. Consideration should be given, therefore, to property taxes, HOA dues, as well as the costs of furnishings, grounds maintenance, home repairs and improvements, and pest control, etc.</p>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Utilities') }}</span>
       </div>
 
       <div class="field">
@@ -66,7 +69,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="housingLocal.additionalCosts">
+              <input class="input" type="number" min="0" max="100000" v-model.number="housingLocal.additionalCosts" v-validate="" name="HousingAdd">
               <span class="icon is-small is-left">
                 <i class="fas fa-dollar-sign"></i>
               </span>
@@ -76,6 +79,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('HousingAdd') }}</span>
       </div>
     </div>
 

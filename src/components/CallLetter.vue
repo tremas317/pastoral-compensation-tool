@@ -9,13 +9,14 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="text" size=40 v-model="callLocal.pastorName" autocomplete="off">
+              <input class="input" type="text" size=40 v-model="callLocal.pastorName" v-validate="'required|max:100'" name="PastorName" autocomplete="off">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
             </p>
           </div>
         </div>
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('PastorName') }}</span> 
       </div>
       
       <div class="field">
@@ -24,13 +25,14 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="text" size=40 v-model="callLocal.churchName" autocomplete="off">
+              <input class="input" type="text" size=40 v-model="callLocal.churchName" autocomplete="off" v-validate="'required|max:100'" name="ChurchName">
               <span class="icon is-small is-left">
                 <i class="fas fa-church"></i>
               </span>
             </p>
           </div>
         </div>
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('ChurchName') }}</span> 
       </div>
 
       <div class="field">
@@ -39,13 +41,14 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="text" v-model="callLocal.churchCity" autocomplete="off">
+              <input class="input" type="text" v-model="callLocal.churchCity" autocomplete="off" v-validate="'required|max:40'" name="City">
               <span class="icon is-small is-left">
                 <i class="fas fa-map-marker-alt"></i>
               </span>
             </p>
           </div>
         </div>
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('City') }}</span> 
       </div>      
       
       <div class="field">
@@ -65,6 +68,63 @@
           </span>
         </p>
       </div>      
+           
+      <div class="field">
+        <label class="label">How many weeks of vacation are provided?</label>
+        <div class="control">
+            <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" v-model.number="callLocal.weeksVacation" 
+                min="0" max="20" v-validate="'required'" name="Vacation" autocomplete="off">
+              <span class="icon is-small is-left">
+                <i class="fas fa-plane-departure"></i>
+              </span>
+            </p>    
+            <div class="control">
+              <a class="button is-static">weeks</a>
+            </div>            
+            </div>
+        </div>   
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('Vacation') }}</span>            
+      </div>  
+      
+      <div class="field">
+        <label class="label">How many weeks of study leave are provided?</label>
+        <div class="control">
+            <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" min="0" max="20" v-model.number="callLocal.weeksStudyLeave" autocomplete="off" v-validate="" name="StudyLeave">
+              <span class="icon is-small is-left">
+                <i class="fas fa-book-reader"></i>
+              </span>
+            </p>    
+            <div class="control">
+              <a class="button is-static">weeks</a>
+            </div>            
+            </div>
+        </div>          
+        <p class="help">(Enter '0' if no study leave is planned to be offered).</p>
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('StudyLeave') }}</span>
+      </div>     
+
+      <div class="field">
+        <label class="label">After how many years of service in ministry would the church like to offer a sabbatical? </label>
+        <div class="control">
+            <div class="field has-addons">
+            <p class="control has-icons-left">
+              <input class="input" type="number" min="0" max="20" v-model.number="callLocal.sabbaticalYears" autocomplete="off" v-validate="" name="Sabbatical">
+              <span class="icon is-small is-left">
+                <i class="fas fa-cross"></i>
+              </span>
+            </p>    
+            <div class="control">
+              <a class="button is-static">years</a>
+            </div>            
+            </div>
+        </div>          
+        <p class="help">(Enter '0' if no sabbatical is planned to be offered).</p>
+        <span class="is-italic has-text-danger is-invalid">{{ errors.first('Sabbatical') }}</span>
+      </div>          
       
       <div class="field">
         <label class="label">Include the clause "And that you may be free from worldly care and employment," before
@@ -82,59 +142,7 @@
           </span>
         </p>
       </div>
-           
-      <div class="field">
-        <label class="label">How many weeks of vacation are provided?</label>
-        <div class="control">
-            <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="callLocal.weeksVacation" autocomplete="off">
-              <span class="icon is-small is-left">
-                <i class="fas fa-plane-departure"></i>
-              </span>
-            </p>    
-            <div class="control">
-              <a class="button is-static">weeks</a>
-            </div>            
-            </div>
-        </div>   
-      </div>  
-      
-      <div class="field">
-        <label class="label">How many weeks of study leave are provided?</label>
-        <div class="control">
-            <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="callLocal.weeksStudyLeave" autocomplete="off">
-              <span class="icon is-small is-left">
-                <i class="fas fa-book-reader"></i>
-              </span>
-            </p>    
-            <div class="control">
-              <a class="button is-static">weeks</a>
-            </div>            
-            </div>
-        </div>          
-      </div>     
 
-      <div class="field">
-        <label class="label">After how many years of service in ministry would the church like to offer a sabbatical? </label>
-        <div class="control">
-            <div class="field has-addons">
-            <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="callLocal.sabbaticalYears" autocomplete="off">
-              <span class="icon is-small is-left">
-                <i class="fas fa-cross"></i>
-              </span>
-            </p>    
-            <div class="control">
-              <a class="button is-static">years</a>
-            </div>            
-            </div>
-        </div>          
-        <p class="help">(Enter '0' if no sabbatical is planned to be offered).</p>
-      </div>    
-      
       <br />
       <br />
       <button class="button is-medium is-info" :class="{ 'is-loading': docxLoading }"  @click="submitCallLetter('DOCX')" >
@@ -226,6 +234,7 @@ function formatNumber(text, prec) {
     return num.toFixed(prec);
 }
 
+
 export default {
   name: "CallLetter",
   props: [
@@ -271,7 +280,18 @@ export default {
             document.getElementById('errorClauseRequired').classList.remove("is-hidden");
             document.getElementById('selClause').focus();
             return;
-        }          
+        }
+        
+        var valid = true;
+        const elements = document.getElementsByClassName("is-danger");
+        for (var e of elements) {
+                if (e.classList.contains("button")) continue;
+                e.focus();
+                valid = false;
+                break;
+        }
+        
+        if (!valid) return;
         
         var request = require('request');
         var timestamp = Date.now();
@@ -325,7 +345,7 @@ export default {
         
         var options = {
           'method': 'POST',
-          'url': 'https://pclservice.azurewebsites.net/api/Merge', 
+          'url': 'https://pclservice.azurewebsites.net/api/Merge',           
           //'url': 'http://localhost:61327/api/Merge',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

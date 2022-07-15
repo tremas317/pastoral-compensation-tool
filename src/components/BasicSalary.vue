@@ -26,7 +26,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" min="1" max="20" v-model.number="basicLocal.persons">              
+              <input class="input" type="number" min="1" max="20" v-model.number="basicLocal.persons" v-validate="'required'" name="Persons">              
               <span class="icon is-small is-left">
                 <i class="fas fa-users"></i>
               </span>
@@ -36,6 +36,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Persons') }}</span>            
       </div>
 
       <div class="field">
@@ -43,7 +44,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="basicLocal.yearsOfService">
+              <input class="input" type="number" min="0" max="99" v-model.number="basicLocal.yearsOfService" v-validate="'required'" name="YearOfService">
               <span class="icon is-small is-left">
                 <i class="fas fa-calendar-alt"></i>
               </span>
@@ -53,6 +54,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('YearOfService') }}</span>            
       </div>
     </div>
 
@@ -76,6 +78,8 @@ export default {
     }
   }
 };
+
+
 
 </script>
 

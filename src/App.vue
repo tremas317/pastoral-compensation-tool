@@ -79,6 +79,51 @@ import OtherExpenses from "./components/OtherExpenses";
 import CallLetter from "./components/CallLetter";
 import Report from "./components/Report";
 
+import { Validator } from 'vee-validate';
+
+const errDict = {
+    en: {
+        attributes: {
+            Persons: 'number of persons',
+            YearOfService: 'year of service',
+            Rent: 'monthly rent or mortgage',
+            HomeIns: 'monthly homeowners/renters insurance cost',
+            Utilities: 'monthly utilities cost',
+            HousingAdd: 'additional housing costs',
+            RetireContrib: 'retirement contribution',
+            SecaPct: 'percent contribution',
+            RetirePct: 'percent contribution',
+            HealthIns: 'monthly healthcare cost',
+            LifeIns: 'monthly life insurance cost',
+            DisabilityIns: 'monthly disability insurance cost',
+            Books: 'books and journals expense',
+            ContEd: 'continuing education expense',
+            Laptop: 'laptop expense',
+            Cellphone: 'monthly cellphone expense',  
+            Vehicle: 'monthly vehicle expense',
+            ChildEd: 'monthly education expense',
+            StudentLoan: 'monthly loan or debt contribution',
+            OtherExp: 'cost of other expenses',
+            PastorName: 'pastor name',
+            ChurchName: 'church name',
+            City: 'city',
+            Vacation: 'number of weeks',
+            StudyLeave: 'number of weeks',
+            Sabbatical: 'number of years',
+        },
+        messages: {
+            required: (fld) => 'The ' + fld + ' is required.',
+            decimal: (fld) => 'The ' + fld + ' is required.',
+            min_value: (fld, params) => 'The ' + fld + ' must be ' + params[0] + ' or more.',
+            max_value: (fld, params) => 'The ' + fld + ' cannot exceed ' + params[0] + '.',
+        },
+        custom: {
+        }
+    }
+};
+
+Validator.localize(errDict);
+
 export default {
   name: "app",
   components: {

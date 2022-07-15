@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import VeeValidate from 'vee-validate';
 
 import "@fortawesome/fontawesome-free/css/all.css";
 import Vue2Filters from "vue2-filters";
@@ -18,6 +19,13 @@ const options = {
 };
 
 Vue.use(VueHtmlToPaper, options);
+Vue.use(VeeValidate, {
+    classes: true,
+    classNames: {
+        valid: 'is-valid',
+        invalid: 'is-danger'
+    }
+});
 
 
 new Vue({

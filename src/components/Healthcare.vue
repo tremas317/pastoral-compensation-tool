@@ -77,7 +77,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.SECAPercent">
+              <input class="input" type="number" min="0" max="100" v-model.number="healthcareLocal.SECAPercent" v-validate="" name=SecaPct>
               <span class="icon is-small is-left">
                 <i class="fas fa-percent"></i>
               </span>
@@ -87,6 +87,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('SecaPct') }}</span>
       </div>
 
       <div class="field" v-if="healthcareLocal.isOptedOut === 'Yes'">
@@ -94,7 +95,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.optOutContribution">
+              <input class="input" type="number"  min=0 max=100000 v-model.number="healthcareLocal.optOutContribution" v-validate="" name="RetireContrib">
               <span class="icon is-small is-left">
                 <i class="fas fa-money-bill"></i>
               </span>
@@ -107,6 +108,7 @@
             class="help"
           >Recommended Amount: ${{ computedHealthcare.halfSECA }} (One half of SECA Taxes)</p>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('RetireContrib') }}</span>
       </div>
 
       <div class="field">
@@ -116,7 +118,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.pensionPercent">
+              <input class="input" type="number" min="0" max="100" v-model.number="healthcareLocal.pensionPercent" v-validate="" name="RetirePct">
               <span class="icon is-small is-left">
                 <i class="fas fa-percent"></i>
               </span>
@@ -126,6 +128,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('RetirePct') }}</span>
       </div>
 
       <h4 class="title is-4">Insurance</h4>
@@ -134,7 +137,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.healthInsurace">
+              <input class="input" type="number" min="0" max="10000" v-model.number="healthcareLocal.healthInsurace" v-validate="" name="HealthIns">
               <span class="icon is-small is-left">
                 <i class="fas fa-user-md"></i>
               </span>
@@ -147,6 +150,7 @@
             class="help"
           >Taking into consideration the size of his family and the ages of family members, and your love for his family, what health care coverages should be provided? Actually get quotes. If you determine that a high deductible plan would be desirable for all involved, make sure that there is enough discretionary income in his package to cover the deductible.</p>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('HealthIns') }}</span>
       </div>
 
       <div class="field">
@@ -154,7 +158,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="healthcareLocal.lifeInsurance">
+              <input class="input" type="number" min="0" max="5000" v-model.number="healthcareLocal.lifeInsurance" v-validate="" name="LifeIns">
               <span class="icon is-small is-left">
                 <i class="fas fa-life-ring"></i>
               </span>
@@ -170,6 +174,7 @@
             >www.lifehappens.org/life-insurance-needs-calculator/</a>
           </p>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('LifeIns') }}</span>
       </div>
 
       <div class="field">
@@ -177,11 +182,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input
-                class="input"
-                type="number"
-                v-model.number="healthcareLocal.disabilityInsurance"
-              >
+              <input class="input" type="number" min="0" max="5000" v-model.number="healthcareLocal.disabilityInsurance" v-validate="" name="DisabilityIns">
               <span class="icon is-small is-left">
                 <i class="fas fa-wheelchair"></i>
               </span>
@@ -195,6 +196,7 @@
           >Disability insurance is a very inexpensive way of guarding both the pastor’s care and the church’s budget. How much will his monthly premiums be? Note: this should be included in his salary and taxed.</p>
         </div>
       </div>
+      <span class="is-italic has-text-danger">{{ errors.first('DisabilityIns') }}</span>
     </div>
 
     <h4

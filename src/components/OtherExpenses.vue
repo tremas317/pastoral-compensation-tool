@@ -9,7 +9,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.books">
+              <input class="input" type="number" min="0" max="10000" v-model.number="otherLocal.books" v-validate="" name="Books">
               <span class="icon is-small is-left">
                 <i class="fas fa-book"></i>
               </span>
@@ -19,6 +19,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Books') }}</span>
       </div>    
     
       <div class="field">
@@ -28,7 +29,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.classes">
+              <input class="input" type="number" min="0" max="50000" v-model.number="otherLocal.classes" v-validate="" name="ContEd">
               <span class="icon is-small is-left">
                 <i class="fas fa-chalkboard-teacher"></i>
               </span>
@@ -38,6 +39,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('ContEd') }}</span>
       </div>
       
       <div class="field">
@@ -47,7 +49,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.computer">
+              <input class="input" type="number" min="0" max="10000" v-model.number="otherLocal.computer" v-validate="" name="Laptop">
               <span class="icon is-small is-left">
                 <i class="fas fa-laptop"></i>
               </span>
@@ -60,6 +62,7 @@
             class="help"
           >The calculation will divide the 3 year replacement figure into an annual sum.</p>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Laptop') }}</span>
       </div>
     
       <div class="field">
@@ -69,7 +72,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.cellphone">
+              <input class="input" type="number" min="0" max="1000" v-model.number="otherLocal.cellphone" v-validate="" name="Cellphone">
               <span class="icon is-small is-left">
                 <i class="fas fa-mobile"></i>
               </span>
@@ -79,6 +82,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Cellphone') }}</span>
       </div>   
     
       <div class="field">
@@ -88,7 +92,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.vehicle">
+              <input class="input" type="number" min="0" max="10000" v-model.number="otherLocal.vehicle" v-validate="" name="Vehicle">
               <span class="icon is-small is-left">
                 <i class="fas fa-car"></i>
               </span>
@@ -98,6 +102,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('Vehicle') }}</span>
       </div>   
       
       <div class="field">
@@ -107,7 +112,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.childrensEducation">
+              <input class="input" type="number" min="0" max="100000" v-model.number="otherLocal.childrensEducation" v-validate="" name="ChildEd">
               <span class="icon is-small is-left">
                 <i class="fas fa-school"></i>
               </span>
@@ -117,16 +122,17 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('ChildEd') }}</span>
       </div>
 
       <div class="field">
         <label
           class="label"
-        >How much will the church contribute each month toward the discharge of student loan or other debt the family caries?</label>
+        >How much will the church contribute each month toward the discharge of student loan or other debt the family carries?</label>
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.debt">
+              <input class="input" type="number" min="0" max="100000" v-model.number="otherLocal.debt" v-validate="" name="StudentLoan">
               <span class="icon is-small is-left">
                 <i class="fas fa-hand-holding-usd"></i>
               </span>
@@ -136,6 +142,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('StudentLoan') }}</span>
       </div>
 
       <div class="field">
@@ -143,7 +150,7 @@
         <div class="control">
           <div class="field has-addons">
             <p class="control has-icons-left">
-              <input class="input" type="number" v-model.number="otherLocal.other">
+              <input class="input" type="number" min="0" max="100000" v-model.number="otherLocal.other" v-validate="" name="OtherExp">
               <span class="icon is-small is-left">
                 <i class="fas fa-ellipsis-h"></i>
               </span>
@@ -153,6 +160,7 @@
             </div>
           </div>
         </div>
+        <span class="is-italic has-text-danger">{{ errors.first('OtherExp') }}</span>
       </div>
     </div>
 
