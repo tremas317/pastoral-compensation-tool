@@ -16,10 +16,9 @@
         <p style="padding-bottom: 6px; padding-left: 24px; padding-top: 30px;"><span style="font-weight: bold; font-size: 1.2em;">User Disclosure:</span> The Pastoral Compensation Tool is designed to assist ministers, sessions, and presbyteries in assessing whether the terms of a minister’s call enable him to be free of worldly care and concern.</p>        
         <p style="padding-bottom: 6px; padding-left: 24px;">There is no one-size-fits-all approach to creating a call that is applicable in every situation.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
-        <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
-        <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2022 Federal Poverty Guidelines, and some adjustments have been made to calculating base salary based on household and years of experience.  Click the Instruction Sheet link below for a fuller explanation.</p>
-        <p style="padding-bottom: 6px; padding-left: 24px; color:#CF0000">Inflation Advisory: Inflation has been occurring at an annualized rate of 7.4% as of August 2022. The tool’s base salary figures are derived from a calculation using the Annual Federal Poverty Rate as published in January 2022, which would not reflect the further price increases which have occurred since then.  The Federal Poverty Rate will not be updated again until January 2023.  Users should consider increasing the base salary suggested by the Compensation Tool to account for inflation through the end of 2022.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2022/02/Compensation-Tool-Guidelines-rev-2-2022.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">1Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2023 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/01/Compensation-Tool-Guidelines-rev-1-2023-1.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
       <BasicSalary :basic.sync="salary.basic" 
         :basicTotal="basicTotal.total"
@@ -205,14 +204,14 @@ export default {
       
       // Base amount is federal poverty guideline * 1.5.  Size amount is federal poverty step amount.
       if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
-        baseAmount = 13590.0 * 1.5;
-        stepAmount = 4720.0;
+        baseAmount = 14580.0 * 1.5;
+        stepAmount = 5140.0;
       } else if (this.salary.basic.region == "Alaska") {
-        baseAmount = 16990.0 * 1.5;
-        stepAmount = 5900.0;
+        baseAmount = 18210.0 * 1.5;
+        stepAmount = 6430.0;
       } else if (this.salary.basic.region == "Hawaii") {
-        baseAmount = 15630.0 * 1.5;
-        stepAmount = 5430.0;
+        baseAmount = 16770.0 * 1.5;
+        stepAmount = 5910.0;
       }
       
       let size = parseInt(this.salary.basic.persons);
