@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section p-0">
     <h2 class="title is-3">Base Salary</h2>
 
     <div class="container box">

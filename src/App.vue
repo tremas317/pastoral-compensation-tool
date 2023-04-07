@@ -16,9 +16,9 @@
         <p style="padding-bottom: 6px; padding-left: 24px; padding-top: 30px;"><span style="font-weight: bold; font-size: 1.2em;">User Disclosure:</span> The Pastoral Compensation Tool is designed to assist ministers, sessions, and presbyteries in assessing whether the terms of a minister’s call enable him to be free of worldly care and concern.</p>        
         <p style="padding-bottom: 6px; padding-left: 24px;">There is no one-size-fits-all approach to creating a call that is applicable in every situation.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
-        <p style="padding-bottom: 6px; padding-left: 24px;">1Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2023 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/01/Compensation-Tool-Guidelines-rev-1-2023-1.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/02/Compensation-Tool-Guidelines-rev-1-2023-2.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
       <BasicSalary :basic.sync="salary.basic" 
         :basicTotal="basicTotal.total"
@@ -386,6 +386,6 @@ export default {
 
 <style lang="scss">
 $input-background-color: whitesmoke;
-
+$section-padding: 1rem 1.5rem;
 @import "~bulma/bulma";
 </style>
