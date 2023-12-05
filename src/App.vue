@@ -18,7 +18,7 @@
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2023 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/02/Compensation-Tool-Guidelines-rev-1-2023-2.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/07/Compensation-Tool-Guidelines-rev-1-2023.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
       <BasicSalary :basic.sync="salary.basic" 
         :basicTotal="basicTotal.total"
@@ -72,6 +72,7 @@
 
 <script>
 
+import Vue from 'vue';
 import BasicSalary from "./components/BasicSalary";
 import HousingAllowance from "./components/HousingAllowance";
 import Healthcare from "./components/Healthcare";
@@ -124,6 +125,9 @@ const errDict = {
 
 Validator.localize(errDict);
 
+import * as Resize from 'iframe-resizer/js/iframeResizer.contentWindow';
+Vue.use(Resize);
+
 export default {
   name: "app",
   components: {
@@ -150,8 +154,8 @@ export default {
           additionalCosts: 500
         },
         healthcare: {
-          healthInsurace: 350,
-          lifeInsurance: 50,
+          healthInsurace: 900,
+          lifeInsurance: 70,
           disabilityInsurance: 100,
           isOptedOut: "No",
           SECAPercent: 50,
@@ -374,6 +378,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style>
