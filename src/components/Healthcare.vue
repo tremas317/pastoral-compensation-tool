@@ -150,12 +150,12 @@
                     </div>
                 </div>
                 <div class="column">
-                    <a target="_blank" href="http://opcbenefits.decisely.com/" class="button is-link">
+                    <!-- <a target="_blank" href="http://opcbenefits.decisely.com/" class="button is-link">
                     <span class="icon">
                         <i class="fas fa-external-link-alt"></i>
                     </span>
                     <span>Enter OPC Ministers Insurance Portal</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <p class="help">Taking into consideration the size of his family and the ages of family members, and your love for his family, what health care coverages should be provided? Actually get quotes. If you determine that a high deductible plan would be desirable for all involved, make sure that there is enough discretionary income in his package to cover the deductible.</p>
@@ -212,14 +212,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="column">
+                <!-- <div class="column">
                     <a target="_blank" href="http://opcbenefits.decisely.com/" class="button is-link">
                     <span class="icon">
                         <i class="fas fa-external-link-alt"></i>
                     </span>
                     <span>Enter OPC Ministers Insurance Portal</span>
                     </a>
-                </div>
+                </div> -->
             </div>
           <p class="help">Disability insurance is a very inexpensive way of guarding both the pastor’s care and the church’s budget. How much will his monthly premiums be? Note: this should be included in his salary and taxed.</p>
         </div>

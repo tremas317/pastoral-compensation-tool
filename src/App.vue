@@ -17,8 +17,8 @@
         <p style="padding-bottom: 6px; padding-left: 24px;">There is no one-size-fits-all approach to creating a call that is applicable in every situation.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
-        <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2023 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2023/07/Compensation-Tool-Guidelines-rev-1-2023.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2024 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2024/01/Compensation-Tool-Guidelines-rev-1-2024.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
       <BasicSalary :basic.sync="salary.basic" 
         :basicTotal="basicTotal.total"
@@ -208,14 +208,14 @@ export default {
       
       // Base amount is federal poverty guideline * 1.5.  Size amount is federal poverty step amount.
       if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
-        baseAmount = 14580.0 * 1.5;
-        stepAmount = 5140.0;
+        baseAmount = 15060.0 * 1.5;
+        stepAmount = 5380.0;
       } else if (this.salary.basic.region == "Alaska") {
-        baseAmount = 18210.0 * 1.5;
-        stepAmount = 6430.0;
+        baseAmount = 18810.0 * 1.5;
+        stepAmount = 6730.0;
       } else if (this.salary.basic.region == "Hawaii") {
-        baseAmount = 16770.0 * 1.5;
-        stepAmount = 5910.0;
+        baseAmount = 17310.0 * 1.5;
+        stepAmount = 6190.0;
       }
       
       let size = parseInt(this.salary.basic.persons);
