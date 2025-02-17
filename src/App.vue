@@ -18,7 +18,7 @@
         <p style="padding-bottom: 6px; padding-left: 24px;">Consequently, what is offered is a tool that provides guidelines for discussion and evaluation of what is to be included in an adequate call.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">Bear in mind when using the tool that factors such as years of experience and family size can significantly impact the total compensation amount.</p>
         <p style="padding-bottom: 6px; padding-left: 24px;">The tool has been updated with figures from the 2024 Federal Poverty Guidelines.  Click the Instruction Sheet link below for a fuller explanation.</p>
-        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2024/01/Compensation-Tool-Guidelines-rev-1-2024.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
+        <p style="padding-bottom: 10px; padding-top: 6px; padding-left: 24px;"><a target="_blank" href="https://opccmc.org/wp-content/uploads/2025/02/Compensation-Tool-Guidelines-rev-2-2025.pdf">Open The Pastoral Compensation Tool Instruction Sheet</a></p>
         
       <BasicSalary :basic.sync="salary.basic" 
         :basicTotal="basicTotal.total"
@@ -45,6 +45,7 @@
         :medical="healthcareTotal.medicalCare"
         :life="healthcareTotal.lifeInsurance"
         :disability="healthcareTotal.disabilityInsurance"
+        :vision="healthcareTotal.visionInsurance"
         :pension="healthcareTotal.retirementContribution"
         :seca="healthcareTotal.seca"
         :bookAllowance="otherTotal.bookAllowance"
@@ -97,6 +98,7 @@ const errDict = {
             HealthIns: 'monthly healthcare cost',
             LifeIns: 'monthly life insurance cost',
             DisabilityIns: 'monthly disability insurance cost',
+            VisionIns: 'yearly vision and dental insurance cost',
             Books: 'books and journals expense',
             ContEd: 'continuing education expense',
             Laptop: 'laptop expense',
@@ -148,7 +150,7 @@ export default {
           yearsOfService: 0
         },
         housing: {
-          monthlyRent: 1700,
+          monthlyRent: 2000,
           insurance: 100,
           utilities: 300,
           additionalCosts: 500
@@ -156,7 +158,8 @@ export default {
         healthcare: {
           healthInsurace: 900,
           lifeInsurance: 70,
-          disabilityInsurance: 100,
+          disabilityInsurance: 40,
+          visionInsurance: 0,
           isOptedOut: "No",
           SECAPercent: 50,
           optOutContribution: 0,
@@ -208,14 +211,14 @@ export default {
       
       // Base amount is federal poverty guideline * 1.5.  Size amount is federal poverty step amount.
       if (this.salary.basic.region == "48 Contiguous, DC & Canada") {
-        baseAmount = 15060.0 * 1.5;
-        stepAmount = 5380.0;
+        baseAmount = 15650.0 * 1.5;
+        stepAmount = 5500.0;
       } else if (this.salary.basic.region == "Alaska") {
-        baseAmount = 18810.0 * 1.5;
-        stepAmount = 6730.0;
+        baseAmount = 19550.0 * 1.5;
+        stepAmount = 6880.0;
       } else if (this.salary.basic.region == "Hawaii") {
-        baseAmount = 17310.0 * 1.5;
-        stepAmount = 6190.0;
+        baseAmount = 17990.0 * 1.5;
+        stepAmount = 6330.0;
       }
       
       let size = parseInt(this.salary.basic.persons);
@@ -289,6 +292,7 @@ export default {
         (parseInt(this.salary.healthcare.lifeInsurance) || 0) * 12;
       let disabilityInsurance =
         (parseInt(this.salary.healthcare.disabilityInsurance) || 0) * 12;
+      let visionInsurance = (parseInt(this.salary.healthcare.visionInsurance) || 0);
       let medicare = parseInt(this.computedSalary.healthcare.medicare * (this.salary.healthcare.SECAPercent / 100)) || 0;
       let socialSecurity =
         parseInt(this.computedSalary.healthcare.socialSecurity * (this.salary.healthcare.SECAPercent / 100)) || 0;
@@ -308,12 +312,14 @@ export default {
             medicalCare +
             lifeInsurace +
             disabilityInsurance +
+            visionInsurance +
             medicare +
             socialSecurity +
             retirementContribution,
           medicalCare: medicalCare,
           lifeInsurance: lifeInsurace,
           disabilityInsurance: disabilityInsurance,
+          visionInsurance: visionInsurance, 
           medicare: medicare,
           socialSecurity: socialSecurity,
           retirementContribution: retirementContribution,
@@ -325,11 +331,13 @@ export default {
             medicalCare +
             lifeInsurace +
             disabilityInsurance +
+            visionInsurance +
             optOutContribution +
             retirementContribution,
           medicalCare: medicalCare,
           lifeInsurance: lifeInsurace,
           disabilityInsurance: disabilityInsurance,
+          visionInsurance: visionInsurance, 
           optOutContribution: optOutContribution,
           retirementContribution: retirementContribution,
           seca: optOutContribution

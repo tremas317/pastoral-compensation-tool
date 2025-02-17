@@ -75,6 +75,10 @@
                 <td class="has-text-right">{{ healthcareSalary.disabilityInsurance | currency('$', 0) }}</td>
               </tr>
               <tr>
+                <td>Vision/Dental Insurance</td>
+                <td class="has-text-right">{{ healthcareSalary.visionInsurance | currency('$', 0) }}</td>
+              </tr>
+              <tr>
                 <td>Retirement Contribution</td>
                 <td class="has-text-right">{{ healthcareSalary.retirementContribution | currency('$', 0) }}</td>
               </tr>
