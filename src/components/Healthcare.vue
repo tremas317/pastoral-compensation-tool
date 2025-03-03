@@ -265,7 +265,7 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Health Insuance Portal</p>
+                <p class="modal-card-title">Health Insurance Portal</p>
                 <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
